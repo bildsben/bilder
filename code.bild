@@ -1,0 +1,21 @@
+worker is builder
+
+// The below code is ran as a builder
+
+speak This is an EXAMPLE of how SPEAK simply return what WAS written in THE speak end TAGS. end
+yell this is an EXAMPLE to show how all of this IS CONVERTED to UPPERCASE. end
+whisper THIS IS AN example of HOW THIS IS converted to LOWERCASE. end
+
+// Now, to switch to slacker we use
+
+worker is slacker
+
+// The following code no longer needs the "end" statement
+
+// The following code creates a blank line in the console log.
+speak
+speak 
+
+speak This is an EXAMPLE of how SPEAK simply return what WAS written in THE speak end TAGS.
+yell this is an EXAMPLE to show how all of this IS CONVERTED to UPPERCASE.
+whisper THIS IS AN example of HOW THIS IS converted to LOWERCASE.
