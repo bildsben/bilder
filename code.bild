@@ -6,6 +6,10 @@ speak This is an EXAMPLE of how SPEAK simply return what WAS written in THE spea
 yell this is an EXAMPLE to show how all of this IS CONVERTED to UPPERCASE. end
 whisper THIS IS AN example of HOW THIS IS converted to LOWERCASE. end
 
+remember 12 end
+
+think end
+
 // Now, to switch to slacker we use
 
 worker is slacker
@@ -19,3 +23,67 @@ speak
 speak This is an EXAMPLE of how SPEAK simply return what WAS written in THE speak end TAGS.
 yell this is an EXAMPLE to show how all of this IS CONVERTED to UPPERCASE.
 whisper THIS IS AN example of HOW THIS IS converted to LOWERCASE.
+
+remember 14
+
+think
+
+// the below code prints out the documentation for bilder
+
+worker is slacker
+
+speak
+speak
+
+speak =============== 
+speak = bilder docs = 
+speak =============== 
+
+speak 
+speak 
+
+yell Worker is 
+speak 'worker is' is a command used to set the worker type. 
+speak As of current, there are only TWO worker types available for use. 
+speak 
+speak a. Builder. 
+speak b. Slacker. 
+speak 
+speak There isn't really a large difference between the two. 
+speak The only difference really is that when using the command: 
+speak worker is slacker 
+speak No lines of code require the "end" statement at the end of a line. 
+speak 
+speak When using: 
+speak worker is builder 
+speak Lines of code will need to contain the word "end" at the end of each line.
+
+speak 
+
+yell The speak command. 
+speak The speak command takes in text, and prints it out to terminal as it was passed through. 
+speak Pretty simple if you ask me.
+
+speak 
+
+yell The yell command. 
+speak The yell command takes in text, and prints it to the terminal in all caps. 
+speak Again, pretty simple to get your head around. 
+
+speak  
+
+yell The whisper command. 
+speak The whisper command does... can you guess? 
+speak The whisper command takes in text, and prints it to the terminal in all lower case. 
+speak It is literally that simple.
+
+speak 
+
+yell remember. 
+speak The remember command takes in a number, and will remember that number. 
+yell note: only one number can be remembered at a time. 
+
+speak 
+
+yell think. 
+speak The think command thinks back to the number supplied in "remember. 

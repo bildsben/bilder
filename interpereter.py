@@ -1,8 +1,17 @@
+# one day, when i can be bothered to make this shit more
+# efficient, i will.
+
+# for now, im just trying to get it to work so if you 
+# are gonna complain about how inefficient it is you
+# can go sym
+
 class Builder:
 	def throwerror(self, errortype, line):
 		print("The builders couldn't construct your sh*tty code.")
 
 		if errortype == "noend": errormsg = "Your code does not contain a line end. Line ends are a simple 'end' at the end of the line."
+		if errortype == "notnumber": errormsg = "Your 'remember' statement does not contain a number after the first declaration of memory."
+		if errortype == "falserecieved": errormsg = "You have not declared anything to remember."
 		print("Error found on the following line: "+line)
 		exit(errormsg)
 
@@ -69,7 +78,43 @@ class Builder:
 
 		print(itemcomp)
 
-class Slacker:
+	def remember(self, codel):
+		command = codel.split(" ")
+
+		if "end" not in command:
+			self.throwerror("noend", codel)
+
+		memory = command[1]
+
+		try:
+			memory = int(memory)
+		except Exception as e:
+			self.throwerror("notnumber", codel)
+			return False
+
+		return memory
+
+	def think(self, codel, memory):
+		command = codel.split(" ")
+
+		if "end" not in command:
+			self.throwerror("noend", codel)
+			
+		if memory == False:
+			self.throwerror("falserecieved", codel)
+		else:
+			print(memory)
+
+
+class Slacker:	
+	def throwerror(self, errortype, line):
+		print("The builders couldn't construct your sh*tty code.")
+
+		if errortype == "notnumber": errormsg = "Your 'remember' statement does not contain a number after the first declaration of memory."
+		if errortype == "falserecieved": errormsg = "You have not declared anything to remember."
+		print("Error found on the following line: "+line)
+		exit(errormsg)
+
 	def speak(self, codel):
 		command = codel.split(" ")
 
@@ -116,6 +161,25 @@ class Slacker:
 
 		print(itemcomp)
 
+	def remember(self, codel):
+		command = codel.split(" ")
+
+		memory = command[1]
+
+		try:
+			memory = int(memory)
+		except Exception as e:
+			self.throwerror("notnumber", codel)
+			return 1
+
+		return memory
+		
+	def think(self, codel, memory):
+		if memory == False:
+			self.throwerror("falserecieved", codel)
+		else:
+			print(memory)
+
 
 # Breakdown of "bilder":
 # Files end in .bild
@@ -143,6 +207,7 @@ file.close()
 
 usingBuilder = False
 usingSlacker = False
+memory = False
 
 for line in code.split("\n"):
 	if line == "worker is slacker":
@@ -165,6 +230,10 @@ for line in code.split("\n"):
 			builder.yell(line)
 		elif line.split(" ")[0] == "whisper":
 			builder.whisper(line)
+		elif line.split(" ")[0] == "remember":
+			memory = builder.remember(line)
+		elif line.split(" ")[0] == "think":
+			builder.think(line, memory)
 		elif line.split(" ")[0] == "//":
 			pass # // is the comment tag
 		elif line.split(" ") == [""]: 
@@ -184,6 +253,10 @@ for line in code.split("\n"):
 			slacker.yell(line)
 		elif line.split(" ")[0] == "whisper":
 			slacker.whisper(line)
+		elif line.split(" ")[0] == "remember":
+			memory = slacker.remember(line)
+		elif line.split(" ")[0] == "think":
+			slacker.think(line, memory)
 		elif line.split(" ")[0] == "//":
 			pass # // is the comment tag
 		elif line.split(" ") == [""]: 
