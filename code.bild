@@ -70,7 +70,7 @@ speak Pretty simple if you ask me.
 
 speak 
 
-yell The yell command. 
+yell The y e l l command. 
 speak The yell command takes in text, and prints it to the terminal in all caps. 
 speak Again, pretty simple to get your head around. 
 
@@ -83,18 +83,18 @@ speak It is literally that simple.
 
 speak 
 
-yell remember. 
+yell The remember command. 
 speak The remember command takes in a number, and will remember that number. 
 yell note: only one number can be remembered at a time. 
 
 speak 
 
-yell think. 
+yell The think command. 
 speak The think command thinks back to the number supplied in "remember. 
 
 speak
 
-yell ask.
+yell The ask command.
 speak The ask command takes input (a number), and stores it in memory, as
 speak if you were using the memory command.
 
