@@ -12,8 +12,33 @@ class Builder:
 		if errortype == "noend": errormsg = "Your code does not contain a line end. Line ends are a simple 'end' at the end of the line."
 		if errortype == "notnumber": errormsg = "Your 'remember' statement does not contain a number after the first declaration of memory."
 		if errortype == "falserecieved": errormsg = "You have not declared anything to remember."
-		print("Error found on the following line: "+line)
+		if errortype == "notnumberinp": errormsg = "You did not type a number into the input."
+
+		if line != False:
+			print("Error found on the following line: "+str(line))
 		exit(errormsg)
+
+	def ask(self, codel):
+		command = codel.split(" ")
+
+		if "end" not in command:
+			self.throwerror("noend", codel)
+
+		command.remove("end")
+		command.remove("ask")
+		commandcompiled = ""
+		for item in command:
+			commandcompiled = commandcompiled + item+ " " 
+
+		inp = input(commandcompiled)
+		try:
+			inp = int(inp)
+		except Exception:
+			self.throwerror("notnumberinp", False)
+
+		inpmod = "remember " + str(inp) + " end"
+
+		self.remember(inpmod)
 
 	def speak(self, codel):
 		command = codel.split(" ")
@@ -79,7 +104,9 @@ class Builder:
 		print(itemcomp)
 
 	def remember(self, codel):
-		command = codel.split(" ")
+		global memory
+
+		command = str(codel).split(" ")
 
 		if "end" not in command:
 			self.throwerror("noend", codel)
@@ -112,7 +139,10 @@ class Slacker:
 
 		if errortype == "notnumber": errormsg = "Your 'remember' statement does not contain a number after the first declaration of memory."
 		if errortype == "falserecieved": errormsg = "You have not declared anything to remember."
-		print("Error found on the following line: "+line)
+		if errortype == "notnumberinp": errormsg = "You did not type a number into the input."
+
+		if line != False:
+			print("Error found on the following line: "+ str(line))
 		exit(errormsg)
 
 	def speak(self, codel):
@@ -128,6 +158,24 @@ class Slacker:
 			itemcomp = itemcomp + item + " "
 
 		print(itemcomp)
+
+	def ask(self, codel):
+		command = codel.split(" ")
+
+		command.remove("ask")
+		commandcompiled = ""
+		for item in command:
+			commandcompiled = commandcompiled + item+ " " 
+
+		inp = input(commandcompiled)
+		try:
+			inp = int(inp)
+		except Exception:
+			self.throwerror("notnumberinp", False)
+
+		inpmod = "remember " + str(inp) + " end"
+
+		self.remember(inpmod)
 
 
 	def yell(self, codel):
@@ -162,7 +210,9 @@ class Slacker:
 		print(itemcomp)
 
 	def remember(self, codel):
-		command = codel.split(" ")
+		global memory
+
+		command = str(codel).split(" ")
 
 		memory = command[1]
 
@@ -234,13 +284,15 @@ for line in code.split("\n"):
 			memory = builder.remember(line)
 		elif line.split(" ")[0] == "think":
 			builder.think(line, memory)
+		elif line.split(" ")[0] == "ask":
+			builder.ask(line)
 		elif line.split(" ")[0] == "//":
 			pass # // is the comment tag
 		elif line.split(" ") == [""]: 
 			pass #if nothing is in the line / is empty line
 		else:
 			if line.split(" ")[0] != "worker" and line.split(" ")[1] != "is":
-				exit("\n-----ERROR-----\nUnrecognsied command BUILDER:\n"+line)
+				exit("\n-----ERROR-----\nUnrecognsied command:\n"+line)
 
 
 	elif usingSlacker:
@@ -257,10 +309,12 @@ for line in code.split("\n"):
 			memory = slacker.remember(line)
 		elif line.split(" ")[0] == "think":
 			slacker.think(line, memory)
+		elif line.split(" ")[0] == "ask":
+			slacker.ask(line)
 		elif line.split(" ")[0] == "//":
 			pass # // is the comment tag
 		elif line.split(" ") == [""]: 
 			pass #if nothing is in the line / is empty line
 		else:
 			if line.split(" ")[0] != "worker" and line.split(" ")[1] != "is":
-				exit("\n-----ERROR-----\nUnrecognsied command BUILDER:\n"+line)
+				exit("\n-----ERROR-----\nUnrecognsied command:\n"+line)

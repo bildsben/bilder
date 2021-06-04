@@ -10,6 +10,10 @@ remember 12 end
 
 think end
 
+ask enter a number end
+
+think end
+
 // Now, to switch to slacker we use
 
 worker is slacker
