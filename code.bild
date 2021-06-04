@@ -91,3 +91,9 @@ speak
 
 yell think. 
 speak The think command thinks back to the number supplied in "remember. 
+
+speak
+
+yell ask.
+speak The ask command takes input (a number), and stores it in memory, as end
+speak if you were using the memory command.
