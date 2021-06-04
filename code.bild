@@ -95,5 +95,13 @@ speak The think command thinks back to the number supplied in "remember.
 speak
 
 yell ask.
-speak The ask command takes input (a number), and stores it in memory, as end
+speak The ask command takes input (a number), and stores it in memory, as
 speak if you were using the memory command.
+
+speak
+
+yell comments.
+speak Comments allow your code to contain notes, for example, notes that say
+speak what each code block does. 
+speak 
+speak Comments are indicated with a // on a new line.
