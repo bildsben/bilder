@@ -1,1 +1,1 @@
-python interpereter.py code.bild
+python3 interpereter.py code.bild
